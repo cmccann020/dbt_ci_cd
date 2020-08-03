@@ -24,13 +24,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 # ======
 # Snowflake Configs
 # ======
-quoting:
-  database: true
-  identifier: false
-  schema: false
-query-comment:
-  comment: "{{ query_comment(node) }}"
-  append: true
+#quoting:
+#  database: true
+#  identifier: false
+#  schema: false
+#query-comment:
+#  comment: "{{ query_comment(node) }}"
+#  append: true
 
 
 
