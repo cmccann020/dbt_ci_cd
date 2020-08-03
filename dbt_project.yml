@@ -1,7 +1,7 @@
 # ======
 # Project Details
 # ======
-name: 'CI/CD Project'
+name: 'testing_project'
 version: '1.0.0'
 config-version: 2
 profile: 'my-snowflake-db'
@@ -63,7 +63,7 @@ models:
 
 
 
-  continuous_integration_continous_deployment:
+  testing_project:
       # Applies to all files under models/example/
       staging:
           materialized: view
