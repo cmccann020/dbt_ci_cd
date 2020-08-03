@@ -62,9 +62,7 @@ models:
 
 
 
-
   testing_project:
-      # Applies to all files under models/example/
       staging:
           materialized: view
           schema: testing
