@@ -52,15 +52,6 @@ models:
     +post-hook:
       - "grant select on {{this}} to role reporter"
 
-  # ------------------
-  # Snowflake Spend Package https://gitlab.com/gitlab-data/snowflake_spend
-  # ------------------
-  snowflake_spend:
-    +materialized: table
-    xf:
-      +schema: analytics
-
-
 
   testing_project:
       staging:
