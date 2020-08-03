@@ -36,4 +36,4 @@ models:
       # Applies to all files under models/example/
       staging:
           materialized: view
-          schema: testing_ci
+          schema: testing
