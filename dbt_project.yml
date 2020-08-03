@@ -24,13 +24,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 # ======
 # Snowflake Configs
 # ======
-#quoting:
-#  database: true
-#  identifier: false
-#  schema: false
-#query-comment:
-#  comment: "{{ query_comment(node) }}"
-#  append: true
+quoting:
+  database: true
+  identifier: false
+  schema: false
+query-comment:
+  comment: "{{ query_comment(node) }}"
+  append: true
 
 
 
@@ -39,18 +39,18 @@ clean-targets:         # directories to be removed by `dbt clean`
 # Model Configs
 # ==================
 models:
-  +pre-hook:
-    - "{{ logging.log_model_start_event() }}"
-  +post-hook:
-    - "{{ logging.log_model_end_event() }}"
+#  +pre-hook:
+#    - "{{ logging.log_model_start_event() }}"
+#  +post-hook:
+#    - "{{ logging.log_model_end_event() }}"
 
   # ------------------
   # Logging Package https://hub.getdbt.com/fishtown-analytics/logging/latest/
   # ------------------
-  logging:
-    +schema: meta
-    +post-hook:
-      - "grant select on {{this}} to role reporter"
+#  logging:
+#    +schema: meta
+#    +post-hook:
+#      - "grant select on {{this}} to role reporter"
 
   # ------------------
   # Snowflake Spend Package https://gitlab.com/gitlab-data/snowflake_spend
