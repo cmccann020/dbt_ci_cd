@@ -3,15 +3,15 @@ my-snowflake-db:
   outputs:
     dev:
       type: snowflake
-      account: ${{ secrets.DBT_PROFILE_SNOWFLAKE_ACCOUNT }}
+      account: "{{ env_var('DBT_PROFILE_SNOWFLAKE_ACCOUNT') }}"
 
       # User/password auth
-      user: ${{ secrets.DBT_PROFILE_USER }}
-      password: ${{ secrets.DBT_PROFILE_PASSWORD }}
+      user: "{{ env_var('DBT_PROFILE_USER') }}"
+      password: "{{ env_var('DBT_PROFILE_PASSWORD') }}"
 
-      role: ${{ secrets.DBT_PROFILE_ROLE }}
-      database: ${{ secrets.DBT_PROFILE_DB }}
-      warehouse: ${{ secrets.DBT_PROFILE_WH }}
-      schema: ${{ secrets.DBT_PROFILE_TESTING_SCHEMA }}
+      role: "{{ env_var('DBT_PROFILE_ROLE') }}"
+      database: "{{ env_var('DBT_PROFILE_DB') }}"
+      warehouse: "{{ env_var('DBT_PROFILE_WH') }}"
+      schema: "{{ env_var('DBT_PROFILE_TESTING_SCHEMA') }}"
       threads: 1
       client_session_keep_alive: False
