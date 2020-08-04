@@ -10,7 +10,6 @@ env:
   DBT_PROFILE_ROLE:              ${{ secrets.DBT_PROFILE_ROLE }}
   DBT_PROFILE_DB:                ${{ secrets.DBT_PROFILE_DB }}
   DBT_PROFILE_WH:                ${{ secrets.DBT_PROFILE_WH }}
-  DBT_PROFILE_TESTING_SCHEMA:    ${{ secrets.DBT_PROFILE_TESTING_SCHEMA }}
 
 
 jobs:
@@ -28,6 +27,7 @@ jobs:
       - run: pip3 install dbt
       - run: dbt --version
       
+      - run: EXPORT DBT_PROFILE_SCHEMA=pr_$(date +%s)
       - run: dbt deps --profiles-dir ./.ci_profiles
       - run: dbt run --profiles-dir ./.ci_profiles
       - run: dbt test --profiles-dir ./.ci_profiles
