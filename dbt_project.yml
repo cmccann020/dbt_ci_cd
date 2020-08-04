@@ -32,9 +32,6 @@ query-comment:
   comment: "{{ query_comment(node) }}"
   append: true
 
-
-
-
 # ==================
 # Model Configs
 # ==================
