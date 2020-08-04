@@ -1,19 +1,15 @@
-name: dbt
+name: dbt_pull_request
 
-on:
-  push:
-    branches:
-      - master
+on: pull_request
 
 env: 
-  DBT_PROFILE_TARGET:            dev
+  DBT_PROFILE_TARGET:            test
   DBT_PROFILE_SNOWFLAKE_ACCOUNT: ${{ secrets.DBT_PROFILE_SNOWFLAKE_ACCOUNT }}
   DBT_PROFILE_USER:              ${{ secrets.DBT_PROFILE_USER }}
   DBT_PROFILE_PASSWORD:          ${{ secrets.DBT_PROFILE_PASSWORD }}
   DBT_PROFILE_ROLE:              ${{ secrets.DBT_PROFILE_ROLE }}
   DBT_PROFILE_DB:                ${{ secrets.DBT_PROFILE_DB }}
   DBT_PROFILE_WH:                ${{ secrets.DBT_PROFILE_WH }}
-  DBT_PROFILE_TESTING_SCHEMA:    ${{ secrets.DBT_PROFILE_TESTING_SCHEMA }}
 
 
 jobs:
@@ -27,12 +23,15 @@ jobs:
 
         with:
           python-version: "3.7.x"
+      - run: python -m pip install --upgrade pip
       - run: pip3 install dbt
       - run: dbt --version
       
-      - run: dbt deps --profiles-dir ./.ci_profiles
-      - run: dbt run --profiles-dir ./.ci_profiles
-      - run: dbt test --profiles-dir ./.ci_profiles
+      - run: |
+          export DBT_PROFILE_SCHEMA=pr_$(date +%s)
+          dbt deps --profiles-dir ./.ci_profiles
+          dbt run --profiles-dir ./.ci_profiles
+          dbt test --profiles-dir ./.ci_profiles
 
 
 

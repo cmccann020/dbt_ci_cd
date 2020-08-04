@@ -1,7 +1,7 @@
 my-snowflake-db:
-  target: dev
+  target: "{{ env_var('DBT_PROFILE_TARGET') }}"
   outputs:
-    dev:
+    test:
       type: snowflake
       account: "{{ env_var('DBT_PROFILE_SNOWFLAKE_ACCOUNT') }}"
 
@@ -12,6 +12,21 @@ my-snowflake-db:
       role: "{{ env_var('DBT_PROFILE_ROLE') }}"
       database: "{{ env_var('DBT_PROFILE_DB') }}"
       warehouse: "{{ env_var('DBT_PROFILE_WH') }}"
-      schema: "{{ env_var('DBT_PROFILE_TESTING_SCHEMA') }}"
+      schema: "{{ env_var('DBT_PROFILE_SCHEMA') }}"
+      threads: 1
+      client_session_keep_alive: False
+
+    prod:
+      type: snowflake
+      account: "{{ env_var('DBT_PROFILE_SNOWFLAKE_ACCOUNT') }}"
+
+      # User/password auth
+      user: "{{ env_var('DBT_PROFILE_USER') }}"
+      password: "{{ env_var('DBT_PROFILE_PASSWORD') }}"
+
+      role: "{{ env_var('DBT_PROFILE_ROLE') }}"
+      database: "{{ env_var('DBT_PROFILE_DB') }}"
+      warehouse: "{{ env_var('DBT_PROFILE_WH') }}"
+      schema: "{{ env_var('DBT_PROFILE_SCHEMA') }}"
       threads: 1
       client_session_keep_alive: False
