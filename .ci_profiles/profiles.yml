@@ -1,0 +1,17 @@
+my-snowflake-db:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: analytics8.us-east-1
+
+      # User/password auth
+      user: DBT_EXAMPLE
+      password: DBTPASSWORD
+
+      role: A8_USER
+      database: DBT_DATAVAULT
+      warehouse: TRAINING_WH
+      schema: DBT_CMCCANN
+      threads: 1
+      client_session_keep_alive: False
