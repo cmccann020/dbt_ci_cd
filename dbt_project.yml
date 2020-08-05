@@ -22,6 +22,20 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
 
 # ======
+# Variables For Snowflake Configs
+# ======
+vars:
+      # Databases
+      "prod_db"                 : "PROD"
+      "production_clone_db"     : "PROD_CLONE"
+
+      # Roles
+      "dev_role"                : "A8_User"
+
+      # Schemas to clone
+      "schemas_to_clone"         : ["datamart", "core", "snapshot", "staging"]
+
+# ======
 # Snowflake Configs
 # ======
 quoting:
