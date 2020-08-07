@@ -31,6 +31,6 @@ jobs:
       - run: |
           export DBT_PROFILE_SCHEMA=pr_$(date +%s)
           dbt deps --profiles-dir ./.ci_profiles
-          dbt run-operation clone_prod_and_update_permissions --args ('{clone_db:var('production_clone_db')}','{role_to_own:var('dev_role')},'{schemas:var('schemas_to_clone')})
+          dbt run-operation clone_prod_and_update_permissions --args '{clone_db:var('production_clone_db')}','{role_to_own:var('dev_role')},'{schemas:var('schemas_to_clone')}
           dbt run --profiles-dir ./.ci_profiles
           dbt test --profiles-dir ./.ci_profiles
