@@ -1,24 +1,15 @@
 version: 2
 
 sources:
-  - name: Sakila
-    database: CMCCANN_DB
-    schema: DBT_CMCCANN
-    description: This is the source data from sakila. I've loaded csv files into an S3 bucket and used that to then stage the files to a snowflake database
+  - name: Adventureworks
+    database: ADVENTUREWORKS_DB
+    schema: HUMANRESOURCES
+    description: This is the source data from advw. I've loaded csv files into an S3 bucket and used that to then stage the files to a snowflake database
     tables: 
-      - name: actor
-        description: "This is the source table for actor information. We are pulling this data from Sakila"
-      - name: address
-      - name: category
-      - name: city
-      - name: country
-      - name: customer
-      - name: film
-      - name: film_actor
-      - name: film_category
-      - name: inventory
-      - name: language
-      - name: payment
-      - name: rental
-      - name: store
-      - name: staff
+      - name: department
+        description: "This is the source table for department information. We are pulling this data from advw"
+      - name: employee
+      - name: jobcandidate
+      - name: shift
+      - name: employeedepartmenthistory
+      - name: employeepayhistory
