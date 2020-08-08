@@ -10,7 +10,7 @@ Deletes the target temporary database
 drop database if exists {{ temp_db_to_delete }}
 {% endset %}
 {{ log('Running: ' ~ delete_statement, info=True) }}
-{%- if temp_db_to_delete in ['test','raw','dev'] pr '_' not in temp_db_to_delete -%}
+{%- if temp_db_to_delete in ['test','raw','dev'] or '_' not in temp_db_to_delete -%}
     {{ exceptions.raise_compiler_error("Error - cannot delete database " ~ temp_db_to_delete) }}
 {%- else -%}
     {% do run_query(delete_statement) %}
