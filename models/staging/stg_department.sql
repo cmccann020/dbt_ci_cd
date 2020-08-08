@@ -1,6 +1,6 @@
 with department as (
 
-    select * from {{ source('Adventureworks','deparment') }}
+    select * from {{ source('Adventureworks','department') }}
 
 )
 
