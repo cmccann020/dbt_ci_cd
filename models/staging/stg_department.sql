@@ -4,4 +4,4 @@ with department as (
 
 )
 
-select * from deparment
+select * from department
