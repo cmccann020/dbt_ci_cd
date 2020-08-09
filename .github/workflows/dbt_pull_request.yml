@@ -8,8 +8,10 @@ env:
   DBT_PROFILE_USER:              ${{ secrets.DBT_PROFILE_USER }}
   DBT_PROFILE_PASSWORD:          ${{ secrets.DBT_PROFILE_PASSWORD }}
   DBT_PROFILE_ROLE:              ${{ secrets.DBT_PROFILE_ROLE }}
-  DBT_PROFILE_DB:                ${{ secrets.DBT_PROFILE_DB }}
   DBT_PROFILE_WH:                ${{ secrets.DBT_PROFILE_WH }}
+  DBT_PROFILE_DB:                ${{ secrets.DBT_PROFILE_DB }}
+  DBT_PROFILE_SCHEMA:            DBT_CMCCANN
+
 
 
 jobs:
@@ -19,6 +21,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
+      ## is this correct??
       - uses: actions/setup-python@v1
 
         with:
@@ -27,12 +30,11 @@ jobs:
       - run: pip3 install dbt
       - run: dbt --version
       
+      - run: dbt run-operation clone_database --profiles-dir ./.ci_profiles
+
       - run: |
-          export DBT_PROFILE_SCHEMA=pr_$(date +%s)
           dbt deps --profiles-dir ./.ci_profiles
           dbt run --profiles-dir ./.ci_profiles
           dbt test --profiles-dir ./.ci_profiles
-
-
-
-
+      
+      - run: dbt run-operation delete_temp_database --profiles-dir ./.ci_profiles

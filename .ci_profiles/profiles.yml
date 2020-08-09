@@ -1,6 +1,9 @@
 my-snowflake-db:
   target: "{{ env_var('DBT_PROFILE_TARGET') }}"
   outputs:
+####
+# Removing test from profiles to test cloning process
+####
     test:
       type: snowflake
       account: "{{ env_var('DBT_PROFILE_SNOWFLAKE_ACCOUNT') }}"

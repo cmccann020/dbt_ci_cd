@@ -22,6 +22,20 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
 
 # ======
+# Variables For Snowflake Configs
+# ======
+vars:
+      # Databases
+      "prod_db"                 : "prod"
+      "production_clone_db"     : "prod_clone"
+
+      # Roles
+      "dev_role"                : "A8_User"
+
+      # Schemas to clone
+      "schemas_to_clone"         : ["PROD", "PROD_STAGING"]
+
+# ======
 # Snowflake Configs
 # ======
 quoting:
@@ -31,9 +45,6 @@ quoting:
 query-comment:
   comment: "{{ query_comment(node) }}"
   append: true
-
-
-
 
 # ==================
 # Model Configs
@@ -56,4 +67,4 @@ models:
   testing_project:
       staging:
           materialized: view
-          schema: testing
+          schema: staging
