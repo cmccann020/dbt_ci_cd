@@ -8,7 +8,7 @@ Also changing to add generate database name as opposed to target.database so it 
 */ #}
 
 {% set delete_statement %}
-drop database if exists '{{ generate_database_name()' }}
+drop database if exists {{ generate_database_name() }}
 {% endset %}
 {{ log('Running: ' ~ delete_statement, info=True) }}
 {%- if target.name in ['prod'] or '_' not in '{{ generate_database_name() }}' -%}
