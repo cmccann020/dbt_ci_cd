@@ -3,7 +3,7 @@ name: dbt_pull_request
 on: pull_request
 
 env: 
-  DBT_PROFILE_TARGET:            prod
+  DBT_PROFILE_TARGET:            test
   DBT_PROFILE_SNOWFLAKE_ACCOUNT: ${{ secrets.DBT_PROFILE_SNOWFLAKE_ACCOUNT }}
   DBT_PROFILE_USER:              ${{ secrets.DBT_PROFILE_USER }}
   DBT_PROFILE_PASSWORD:          ${{ secrets.DBT_PROFILE_PASSWORD }}
@@ -28,9 +28,11 @@ jobs:
       - run: pip3 install dbt
       - run: dbt --version
       
+      - run: dbt run-operation clone_database
+
       - run: |
-          export DBT_PROFILE_SCHEMA=pr_$(date +%s)
-          dbt run-operation clone_database()
           dbt deps --profiles-dir ./.ci_profiles
           dbt run --profiles-dir ./.ci_profiles
           dbt test --profiles-dir ./.ci_profiles
+      
+      - run: dbt run-operation delete_temp_database
