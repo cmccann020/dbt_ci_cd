@@ -11,7 +11,7 @@ env:
   DBT_PROFILE_WH:                ${{ secrets.DBT_PROFILE_WH }}
   DBT_PROFILE_DB:                ${{ secrets.DBT_PROFILE_DB }}
   DBT_PROFILE_SCHEMA:            DBT_CMCCANN
-  PR_NUMBER:                     ${{ github.event.number }}
+  PR_NUMBER:                     ${{ github.pull_request.id }}
 
 
 jobs:
