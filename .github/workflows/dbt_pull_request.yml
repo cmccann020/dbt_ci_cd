@@ -30,7 +30,7 @@ jobs:
       - run: pip3 install dbt
       - run: dbt --version
       
-      - run: dbt run-operation clone_database
+      - run: dbt run-operation clone_database --profiles-dir ./.ci_profiles
 
       - run: |
           dbt deps --profiles-dir ./.ci_profiles
