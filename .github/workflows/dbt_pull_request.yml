@@ -37,4 +37,4 @@ jobs:
           dbt run --profiles-dir ./.ci_profiles
           dbt test --profiles-dir ./.ci_profiles
       
-      - run: dbt run-operation delete_temp_database
+      - run: dbt run-operation delete_temp_database --profiles-dir ./.ci_profiles
