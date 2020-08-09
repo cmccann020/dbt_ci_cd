@@ -22,20 +22,6 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
 
 # ======
-# Variables For Snowflake Configs
-# ======
-vars:
-      # Databases
-      "prod_db"                 : "prod"
-      "production_clone_db"     : "prod_clone"
-
-      # Roles
-      "dev_role"                : "A8_User"
-
-      # Schemas to clone
-      "schemas_to_clone"         : ["PROD", "PROD_STAGING"]
-
-# ======
 # Snowflake Configs
 # ======
 quoting:
@@ -63,7 +49,10 @@ models:
 #    +post-hook:
 #      - "grant select on {{this}} to role reporter"
 
-
+  ## The directions for the usage of these models can be found here: https://gitlab.com/gitlab-data/snowflake_spend
+  snowflake_spend:
+    enabled: true
+    
   testing_project:
       staging:
           materialized: view

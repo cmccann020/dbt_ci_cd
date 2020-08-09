@@ -32,6 +32,7 @@ jobs:
       - run: dbt --version
       
       - run: dbt deps --profiles-dir ./.ci_profiles
+      - run: dbt seed --profiles-dir ./.ci_profiles
       - run: dbt run --profiles-dir ./.ci_profiles
       - run: dbt test --profiles-dir ./.ci_profiles
 
