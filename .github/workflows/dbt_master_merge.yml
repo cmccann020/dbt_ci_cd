@@ -11,7 +11,7 @@ env:
   DBT_PROFILE_USER:              ${{ secrets.DBT_PROFILE_USER }}
   DBT_PROFILE_PASSWORD:          ${{ secrets.DBT_PROFILE_PASSWORD }}
   DBT_PROFILE_ROLE:              ${{ secrets.DBT_PROFILE_ROLE }}
-  DBT_PROFILE_DB:                ${{ secrets.DBT_PROFILE_PROD_DB }}
+  DBT_PROFILE_PROD_DB:                ${{ secrets.DBT_PROFILE_PROD_DB }}
   DBT_PROFILE_WH:                ${{ secrets.DBT_PROFILE_WH }}
   DBT_PROFILE_SCHEMA:            PROD
 
