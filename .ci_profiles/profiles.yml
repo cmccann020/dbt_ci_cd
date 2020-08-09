@@ -13,7 +13,7 @@ my-snowflake-db:
       password: "{{ env_var('DBT_PROFILE_PASSWORD') }}"
 
       role: "{{ env_var('DBT_PROFILE_ROLE') }}"
-      database: "{{ env_var('DBT_PROFILE_DB') }}"
+      database: "{{ env_var('DBT_PROFILE_PROD_DB') }}"
       warehouse: "{{ env_var('DBT_PROFILE_WH') }}"
       schema: "{{ env_var('DBT_PROFILE_SCHEMA') }}"
       threads: 1
@@ -28,7 +28,7 @@ my-snowflake-db:
       password: "{{ env_var('DBT_PROFILE_PASSWORD') }}"
 
       role: "{{ env_var('DBT_PROFILE_ROLE') }}"
-      database: "{{ env_var('DBT_PROFILE_DB') }}"
+      database: "{{ env_var('DBT_PROFILE_PROD_DB') }}"
       warehouse: "{{ env_var('DBT_PROFILE_WH') }}"
       schema: "{{ env_var('DBT_PROFILE_SCHEMA') }}"
       threads: 1
