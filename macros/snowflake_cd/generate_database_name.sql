@@ -12,10 +12,10 @@ This line was changed as the get_user() macro couldn't compile.
 
 */ #}
 
-{%- if target.name in ['prod','dev'] -%}
+{%- if target.name in ['prod'] -%}
     {{ target.database }}
 {%- else -%}
-    {{ env_var('PR_NUMBER','' ) }}_{{ target.database }}_clone
+    {{ env_var('PR_NUMBER','' ) }}_{{ target.database }}_CLONE
 {%- endif -%}
 
 {%- endmacro -%}
