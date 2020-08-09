@@ -3,3 +3,6 @@ packages:
     version: 0.1.0
   - package: fishtown-analytics/dbt_utils
     version: 0.4.1
+  
+  - git: https://gitlab.com/gitlab-data/snowflake_spend.git
+    revision: v1.1.0
