@@ -1,5 +1,5 @@
 # ======
-# Project Details
+# Project Details - details
 # ======
 name: 'testing_project'
 version: '1.0.0'
@@ -52,7 +52,7 @@ models:
   ## The directions for the usage of these models can be found here: https://gitlab.com/gitlab-data/snowflake_spend
   snowflake_spend:
     enabled: true
-    
+
   testing_project:
       staging:
           materialized: view
